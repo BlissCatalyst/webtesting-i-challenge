@@ -81,4 +81,20 @@ describe("enhancer.js", () => {
       });
     });
   });
+
+  // ********** GET **********
+  describe("get()", () => {
+    test("Shows enhancement in name", () => {
+      // sword: {
+      //   name: "sword",
+      //   enhancement: 10,
+      //   durability: 55
+      // }
+      expect(enhancer.get(items.sword)).toEqual({
+        name: `[+ 10] sword`,
+        enhancement: 10,
+        durability: 55
+      });
+    });
+  });
 });

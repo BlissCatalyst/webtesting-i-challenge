@@ -33,5 +33,9 @@ function repair(item) {
 }
 
 function get(item) {
-  return { ...item };
+  let showEnhance = { ...item };
+  if (showEnhance.enhancement > 0) {
+    showEnhance.name = `[+ ${item.enhancement}] ${item.name}`;
+  }
+  return { ...showEnhance };
 }
