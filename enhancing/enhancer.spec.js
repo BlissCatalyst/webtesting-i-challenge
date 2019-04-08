@@ -15,6 +15,7 @@ const items = {
 };
 
 describe("enhancer.js", () => {
+  // ********** REPAIR **********
   describe("repair()", () => {
     test("item durability to 100", () => {
       expect(enhancer.repair(items.sword)).toEqual({
@@ -40,6 +41,17 @@ describe("enhancer.js", () => {
         name: "axe",
         enhancement: 20,
         durability: 99
+      });
+    });
+  });
+
+  // ********** FAILURE **********
+  describe("fail()", () => {
+    test("enhancement > 15 then durability - 5", () => {
+      expect(enhancer.fail(items.sword)).toEqual({
+        name: "sword",
+        enhancement: 10,
+        durability: 50
       });
     });
   });
