@@ -11,6 +11,16 @@ const items = {
     name: "axe",
     enhancement: 20,
     durability: 99
+  },
+  hammer: {
+    name: "hammer",
+    enhancement: 16,
+    durability: 25
+  },
+  dagger: {
+    name: "dagger",
+    enhancement: 19,
+    durability: 100
   }
 };
 
@@ -47,11 +57,27 @@ describe("enhancer.js", () => {
 
   // ********** FAILURE **********
   describe("fail()", () => {
-    test("enhancement > 15 then durability - 5", () => {
+    test("enhancement > 15 then durability -5", () => {
       expect(enhancer.fail(items.sword)).toEqual({
         name: "sword",
         enhancement: 10,
         durability: 50
+      });
+    });
+
+    test("enhancement >= 15 then durability -10", () => {
+      expect(enhancer.fail(items.hammer)).toEqual({
+        name: "hammer",
+        enhancement: 16,
+        durability: 15
+      });
+    });
+
+    test("enhancement > 16 then enhancement -1", () => {
+      expect(enhancer.fail(items.dagger)).toEqual({
+        name: "dagger",
+        enhancement: 18,
+        durability: 90
       });
     });
   });

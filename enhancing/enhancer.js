@@ -17,6 +17,11 @@ function fail(item) {
   let failed = { ...item };
   if (failed.enhancement < 15) {
     failed.durability -= 5;
+  } else {
+    failed.durability -= 10;
+    if (failed.enhancement > 16) {
+      failed.enhancement -= 1;
+    }
   }
   return { ...failed };
 }
