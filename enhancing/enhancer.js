@@ -2,21 +2,40 @@ module.exports = {
   succeed,
   fail,
   repair,
-  get,
+  get
 };
 
 function succeed(item) {
-  return { ...item };
+  let enhancedItem = { ...item };
+  if (enhancedItem.enhancement !== 20) {
+    enhancedItem.enhancement += 1;
+  }
+  return { ...enhancedItem };
 }
 
 function fail(item) {
-  return { ...item };
+  let failed = { ...item };
+  if (failed.enhancement < 15) {
+    failed.durability -= 5;
+  } else {
+    failed.durability -= 10;
+    if (failed.enhancement > 16) {
+      failed.enhancement -= 1;
+    }
+  }
+  return { ...failed };
 }
 
 function repair(item) {
-  return { ...item };
+  let fixedItem = { ...item };
+  fixedItem.durability = 100;
+  return { ...fixedItem };
 }
 
 function get(item) {
-  return { ...item };
+  let showEnhance = { ...item };
+  if (showEnhance.enhancement > 0) {
+    showEnhance.name = `[+ ${item.enhancement}] ${item.name}`;
+  }
+  return { ...showEnhance };
 }
